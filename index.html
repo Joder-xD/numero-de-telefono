@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número de Celular</title>
+    <link rel="icon" href="https://w7.pngwing.com/pngs/670/44/png-transparent-telephone-computer-icons-facebook-email-whatsapp-address-phone-instagram-ic-miscellaneous-text-desktop-wallpaper.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+
+
+ <div class="container">
+        <h1>Número de Celular</h1><br>
+        <form onsubmit="validarCelular(event)">
+            <label for="celular"><h2>Tu Número de celular:</h2></label>
+            <input type="text" id="celular" name="celular" placeholder="Ingrese el número de celular" required>
+            <div id="error-numeros" class="error-message">¡El número debe contener 10 dígitos!</div>
+            <div id="error-letras" class="error-message">No se permiten letras, solo números</div>
+            <div id="error" class="error"></div>
+            <div id="success" class="success"></div>
+            <br><br><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+
+
+
+
+        body {
+
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(145, 145, 145);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+
+
+        .container {
+
+            background: rgb(255, 255, 255);
+            padding: 3em;
+        width: 800px;
+        height: 480px;
+        border: 4px solid #00a108;
+            border-radius: 50px;
+            box-shadow: 0 5px 50px #00a108;
+            text-align: center;
+        }
+
+
+        h1 {
+
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+margin-bottom: 1em;
+color: #00a108;
+font-size: 50px;
+
+}
+
+
+h2 {
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-weight: bold;
+color: black;
+font-style: italic;
+font-size: 25px;
+
+
+}
+
+        #celular{
+
+        width: 55%;
+        height: 0%;
+            font-size: 25px;
+            border: 1px solid #00a108;
+     font-family: Arial, Helvetica, sans-serif;
+   font-style: oblique;
+  
+
+
+        }
+
+
+        input:empty::placeholder {
+            
+            color: #00a108;
+
+    font-size: 18px;
+    text-align: center;
+}
+
+
+        label {
+
+            display: block;
+            margin-bottom: 0.5em;
+            color: #666;
+        }
+
+
+        input[type="text"] {
+
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 1em;
+            font-size: 1em;
+        }
+
+
+        button {
+
+            padding: 18px 30px;
+            background-color: #00a108; 
+            font-family: 'TeXGyreCursor-Regular', monospace;
+            font-weight: bold;
+            border-radius: 5px;
+            color: #ffffff; 
+            border: 2px solid #00a108;
+            font-size: 18px;
+            margin-top: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            font-weight: bold;
+            background-color: #000000;;
+color:rgb(255, 255, 255);
+border: 2px solid #000000; 
+
+        }
+
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @media screen and (max-width: 768px) {
+
+
+
+    #celular{
+
+font-size: 20px;
+width: 100%;
+height: 0%;
+border: 1px solid  rgb(183, 75, 255);
+
+
+    }
+
+
+
+    .container {
+
+
+        padding: 3.5em;
+        width: 320px;
+        height: 40%;
+        box-shadow: 0 5px 50px rgb(183, 75, 255);
+        border: solid 4px  rgb(183, 75, 255);
+
+
+      
+
+    }
+
+
+
+h1 {
+
+font-size: 30px;
+color: rgb(183, 75, 255);
+
+}
+
+
+
+h2 {
+
+
+
+    font-size: 18px;
+
+
+}
+
+
+
+
+    input:empty::placeholder {
+
+        color: rgb(183, 75, 255);
+
+font-size: 12px;
+text-align: center;
+
+}
+
+
+
+
+    /* Botones mas grandes */
+    button { 
+
+margin-top: 25px;
+padding: 20px 20px;
+        font-size: 18px;
+        border-radius: 50px;
+        background-color: rgb(183, 75, 255);;
+        border: solid 1px  rgb(183, 75, 255);
+    }
+
+
+
+}
+
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+
+
+
+function validarCelular(event) {
+            event.preventDefault();
+            const celInput = document.getElementById("celular");
+            const celValue = celInput.value.trim();
+            const numbersPattern = /^[0-9]{10}$/;
+            const errorMessageNumeros = document.getElementById("error-numeros");
+            const errorMessageLetras = document.getElementById("error-letras");
+            const successMessage = document.getElementById("success");
+
+            errorMessageNumeros.style.display = "none";
+            errorMessageLetras.style.display = "none";
+            successMessage.style.display = "none";
+
+            if (!celValue) {
+                errorMessageNumeros.textContent = "Por favor, llene este campo.";
+                errorMessageNumeros.style.display = "block";
+                return;
+            }
+
+            if (celValue.match(numbersPattern)) {
+                console.log("El número de celular es válido.");
+                successMessage.style.display = "block";
+                successMessage.innerHTML = '¡Bien hecho HP! <i class="fas fa-thumbs-up"></i>';
+                setTimeout(() => {
+                    successMessage.style.display = "none";
+                }, 10000);
+            } else {
+                console.log("¡El número de celular debe 10 dígitos!");
+                if (/[^0-9]/.test(celValue)) {
+                    errorMessageLetras.style.display = "block";
+                    errorMessageLetras.textContent = "No se permiten letras, solo números hp";
+                } else {
+                    errorMessageNumeros.style.display = "block";
+                    errorMessageNumeros.textContent = "¡El número  debe contener 10 dígitos!";
+                }
+                setTimeout(() => {
+                    errorMessageNumeros.style.display = "none";
+                    errorMessageLetras.style.display = "none";
+                }, 6000);
+            }
+        }
+
+        document.getElementById("celular").addEventListener("input", function (event) {
+            const errorMessageLetras = document.getElementById("error-letras");
+            if (/[^0-9]/.test(event.target.value)) {
+                errorMessageLetras.style.display = "block";
+                errorMessageLetras.textContent = "No se permiten letras, solo números";
+                setTimeout(() => {
+                    errorMessageLetras.style.display = "none";
+                }, 7000);
+            } else {
+                errorMessageLetras.style.display = "none";
+            }
+        });
+
+
+   
+
+
+
+
+
+
+</script>
+
+
+
